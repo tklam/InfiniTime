@@ -23,6 +23,18 @@
       "format": "bin",
       "target_path": "/fonts/"
    },
+   "lv_font_dots_36": {
+      "sources": [
+         {
+            "file": "fonts/repetitionscrolling.ttf",
+            "symbols": " -0123456789ABCDEFGHIJKLMNOPRSTUVWY"
+         }
+      ],
+      "bpp": 1,
+      "size": 36,
+      "format": "bin",
+      "target_path": "/fonts/"
+   },
    "lv_font_dots_40": {
       "sources": [
          {
@@ -39,11 +51,23 @@
       "sources": [
          {
             "file": "fonts/7segment.woff",
-            "symbols": "0123456789: -"
+            "symbols": " -0123456789ABCDEFGHIJKLMNOPRSTUVWY"
          }
       ],
       "bpp": 1,
       "size": 40,
+      "format": "bin",
+      "target_path": "/fonts/"
+   },
+   "7segments_76" : {
+      "sources": [
+         {
+            "file": "fonts/7segment.woff",
+            "symbols": "0123456789: -"
+         }
+      ],
+      "bpp": 1,
+      "size": 76,
       "format": "bin",
       "target_path": "/fonts/"
    },
