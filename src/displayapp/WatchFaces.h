@@ -8,8 +8,8 @@ namespace Pinetime {
       PineTimeStyle = 2,
       Terminal = 3,
       Infineat = 4,
-      CasioStyleG7710 = 5,
-      OBoy = 6
+      CasioStyleG7710 = 6,
+      OBoy = 5
     };
   }
 }

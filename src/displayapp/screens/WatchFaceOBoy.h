@@ -100,6 +100,9 @@ namespace Pinetime {
         lv_font_t* font_segment76  = nullptr;
 
         lv_obj_t* background_image = nullptr;
+
+        static uint8_t const NUM_O_BOY_IMAGES = 7;
+        static char* const O_BOY_IMAGE_FILE_PATHS [7];
       };
     }
   }

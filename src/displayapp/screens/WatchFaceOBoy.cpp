@@ -14,6 +14,16 @@
 #include "components/settings/Settings.h"
 using namespace Pinetime::Applications::Screens;
 
+char* const WatchFaceOBoy::O_BOY_IMAGE_FILE_PATHS [7] = {
+    (char *) "/images/o_boy.bin",
+    (char *) "/images/o_boy_2.bin",
+    (char *) "/images/o_boy_3.bin",
+    (char *) "/images/o_boy_4.bin",
+    (char *) "/images/o_boy_5.bin",
+    (char *) "/images/o_boy_6.bin",
+    (char *) "/images/o_boy_7.bin"
+};
+
 WatchFaceOBoy::WatchFaceOBoy(Controllers::DateTime& dateTimeController,
                                                    const Controllers::Battery& batteryController,
                                                    const Controllers::Ble& bleController,
@@ -297,6 +307,14 @@ void WatchFaceOBoy::Refresh() {
       // lv_obj_realign(label_day_of_year);
       // lv_obj_realign(label_week_number);
       lv_obj_realign(label_date);
+
+      // update the imsage of O Oby depends on which week day it is
+      {
+      char o_boy_image_file[25] = "F:\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0";
+      int day_index = static_cast<int>(dateTimeController.DayOfWeek())-1;
+      strncpy(&o_boy_image_file[2], O_BOY_IMAGE_FILE_PATHS[day_index], strlen(O_BOY_IMAGE_FILE_PATHS[day_index]));
+      lv_img_set_src(background_image, o_boy_image_file);
+      }
     }
   }
 
@@ -340,9 +358,11 @@ bool WatchFaceOBoy::IsAvailable(Pinetime::Controllers::FS& filesystem) {
     return false;
   }
 
-  filesystem.FileClose(&file);
-  if (filesystem.FileOpen(&file, "/images/o_boy.bin", LFS_O_RDONLY) < 0) {
-    return false;
+  for (uint8_t i=0; i<NUM_O_BOY_IMAGES; i++) {
+      filesystem.FileClose(&file);
+      if (filesystem.FileOpen(&file, O_BOY_IMAGE_FILE_PATHS[i], LFS_O_RDONLY) < 0) {
+        return false;
+      }
   }
 
   filesystem.FileClose(&file);
